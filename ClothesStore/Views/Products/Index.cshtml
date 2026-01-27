@@ -1,10 +1,20 @@
 @model IEnumerable<ClothesStore.Models.Product>
 
-<h1>Produtos</h1>
+<h1 class="my-4">Produtos</h1>
 
-<ul>
-@foreach (var p in Model)
-{
-    <li>@p.Name - @p.Price</li>
-}
-</ul>
+<div class="row">
+    @foreach (var p in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@p.ImageUrl" class="card-img-top" alt="@p.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                    <p class="card-text">@p.Description</p>
+                    <p class="cart-text"><strong>@p.Price.ToString("C")</strong></p>
+                    <a href="/Products/Details/@p.Id" class="btn btn-primary">Ver detalhes</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
